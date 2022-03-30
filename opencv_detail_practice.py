@@ -56,6 +56,7 @@ To prevent computational power
 Resizing,rescale : modify height and width .
 '''
 def reScaleFrame(frame, scale = 0.60):
+    # this way of reszing works with image, video and live video
     height = int(frame.shape[0] * scale)
     width = int(frame.shape[1] * scale)
     dimensions = (width, height)
@@ -64,6 +65,10 @@ def reScaleFrame(frame, scale = 0.60):
     # for shrinking image :  INTER_AREA
     return cv.resize(frame, dimensions, interpolation = cv.INTER_AREA)
 
+def changeRes():
+    # this will work only for live streams
+    capture_video.set(3, width)
+    capture_video.set(4, width)
 
 capture_video = cv.VideoCapture("cars.avi")
 while True:
