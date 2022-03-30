@@ -45,4 +45,38 @@ def readVideo():
     cv.destroyAllWindows()  # close all the windows
 
 
-readVideo()
+# readVideo()
+
+
+                    # RESIZING AND RESCALING
+
+'''
+To prevent computational power
+
+Resizing,rescale : modify height and width .
+'''
+def reScaleFrame(frame, scale = 0.60):
+    height = int(frame.shape[0] * scale)
+    width = int(frame.shape[1] * scale)
+    dimensions = (width, height)
+    print(dimensions)
+    # for enalrging image : INTER_LINEAR or INTER_CUBIC(more expensive)
+    # for shrinking image :  INTER_AREA
+    return cv.resize(frame, dimensions, interpolation = cv.INTER_AREA)
+
+
+capture_video = cv.VideoCapture("cars.avi")
+while True:
+    isTrue, frame = capture_video.read()  # isTrue : whether frame is read or not
+    resized_frame = reScaleFrame(frame, scale=0.60)
+    cv.imshow("carvideo", frame)
+    cv.imshow("carvideo_small", resized_frame)
+
+    #  video will stop when any key is pressed and video rans for 20 ms
+    if cv.waitKey(20) and 0xFF == ord("d"):
+        break
+
+capture_video.release()  # releasing the pointer
+cv.destroyAllWindows()  # close all the windows
+
+
