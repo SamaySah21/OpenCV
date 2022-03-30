@@ -8,6 +8,7 @@
 # !pip install caer
 
 import cv2 as cv
+import numpy as np
 
                   # READ IMAGE
 def readImage():
@@ -65,10 +66,11 @@ def reScaleFrame(frame, scale = 0.60):
     # for shrinking image :  INTER_AREA
     return cv.resize(frame, dimensions, interpolation = cv.INTER_AREA)
 
-def changeRes():
-    # this will work only for live streams
-    capture_video.set(3, width)
-    capture_video.set(4, heidth)
+# def changeRes():
+#     # this will work only for live streams
+#     capture_video.set(3, width)
+#     capture_video.set(4, height)
+#     pass
 
 def runResizedVideo():
     capture_video = cv.VideoCapture("cars.avi")
@@ -86,5 +88,26 @@ def runResizedVideo():
     cv.destroyAllWindows()  # close all the windows
 
 # runResizedVideo()
+
+
+def imageCores():
+    #create blank image
+
+    blank_img = np.zeros((500,500,3), dtype = "uint8")
+    # cv.imshow("BLank Image" , blank_img)
+
+    blank_img[:] = 255,0,0
+    cv.imshow("Blue Image" , blank_img)
+
+    blank_img[:] = 0,255,0
+    cv.imshow("Green Image" , blank_img)
+
+    blank_img[:] = 0,0,255
+    cv.imshow("Red Image" , blank_img)
+
+    cv.waitKey(0)
+
+
+imageCores()
 
 
