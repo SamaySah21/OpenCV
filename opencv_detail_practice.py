@@ -70,18 +70,21 @@ def changeRes():
     capture_video.set(3, width)
     capture_video.set(4, heidth)
 
-capture_video = cv.VideoCapture("cars.avi")
-while True:
-    isTrue, frame = capture_video.read()  # isTrue : whether frame is read or not
-    resized_frame = reScaleFrame(frame, scale=0.60)
-    cv.imshow("carvideo", frame)
-    cv.imshow("carvideo_small", resized_frame)
+def runResizedVideo():
+    capture_video = cv.VideoCapture("cars.avi")
+    while True:
+        isTrue, frame = capture_video.read()  # isTrue : whether frame is read or not
+        resized_frame = reScaleFrame(frame, scale=0.60)
+        cv.imshow("carvideo", frame)
+        cv.imshow("carvideo_small", resized_frame)
 
-    #  video will stop when any key is pressed and video rans for 20 ms
-    if cv.waitKey(20) and 0xFF == ord("d"):
-        break
+        #  video will stop when any key is pressed and video rans for 20 ms
+        if cv.waitKey(20) and 0xFF == ord("d"):
+            break
 
-capture_video.release()  # releasing the pointer
-cv.destroyAllWindows()  # close all the windows
+    capture_video.release()  # releasing the pointer
+    cv.destroyAllWindows()  # close all the windows
+
+# runResizedVideo()
 
 
