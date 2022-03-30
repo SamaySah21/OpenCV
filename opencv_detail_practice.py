@@ -68,7 +68,7 @@ def reScaleFrame(frame, scale = 0.60):
 def changeRes():
     # this will work only for live streams
     capture_video.set(3, width)
-    capture_video.set(4, width)
+    capture_video.set(4, heidth)
 
 capture_video = cv.VideoCapture("cars.avi")
 while True:
